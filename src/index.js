@@ -15,6 +15,7 @@ const width = fixed(cm2pix(_width) * canvas_scale, 0)
 const height = fixed(cm2pix(_height) * canvas_scale, 0)
 
 console.log('canvas size: ', _width, 'cm', _height, 'cm')
+console.log('canvas pixel: ', cm2pix(_width), 'px', cm2pix(_height), 'px')
 console.log('---------------------------------')
 console.log('canvas scale: ', canvas_scale) // scale for better development
 console.log('scaled canvas pixel: ', width, 'px', height, 'px')
@@ -43,34 +44,59 @@ console.log('moon radius: ', fixed(_moon_radius * scale), 'cm')
 console.log('distance: ', fixed(_distance * scale), 'cm')
 console.log('---------------------------------')
 
-// earth
-const earth_radius = cm2pix(_earth_radius * scale) * canvas_scale
+//  scaled
+const earth_radius = fixed(cm2pix(_earth_radius * scale) * canvas_scale)
 console.log('scaled earth radius pixel: ', earth_radius, 'px')
 
-// moon
-const moon_radius = cm2pix(_moon_radius * scale) * canvas_scale
+const moon_radius = fixed(cm2pix(_moon_radius * scale) * canvas_scale)
 console.log('scaled moon radius pixel: ', moon_radius, 'px')
+
+const distance = fixed(cm2pix(_distance * scale) * canvas_scale)
+console.log('scaled distance pixel: ', distance, 'px')
+console.log('---------------------------------')
+
+// earth pos
+const earth_pos = {
+  x: 200,
+  y: 160
+}
+
+const moon_pos = {
+  x: earth_pos.x + distance * Math.cos((Math.PI / 2) * 0.8),
+  y: earth_pos.y + distance * Math.sin((Math.PI / 2) * 0.8)
+}
+console.log(moon_pos)
+
 // draw
 ////////////////////////////////////////////////////////////
 // earth
-earth.setAttribute('x', 100)
-earth.setAttribute('y', 100)
-earth.setAttribute('width', earth_radius * 2)
-earth.setAttribute('height', earth_radius * 2)
-earth.setAttribute(
-  'transform',
-  `translate(${-1 * earth_radius},${-1 * earth_radius})`
-)
+earth.setAttribute('cx', earth_pos.x)
+earth.setAttribute('cy', earth_pos.y)
+earth.setAttribute('r', earth_radius)
 
 // moon
-moon.setAttribute('x', 300)
-moon.setAttribute('y', 300)
-moon.setAttribute('width', moon_radius * 2)
-moon.setAttribute('height', moon_radius * 2)
-moon.setAttribute(
-  'transform',
-  `translate(${-1 * moon_radius},${-1 * moon_radius})`
-)
+moon.setAttribute('cx', moon_pos.x)
+moon.setAttribute('cy', moon_pos.y)
+moon.setAttribute('r', moon_radius)
+// // earth
+// earth.setAttribute('x', 100)
+// earth.setAttribute('y', 100)
+// earth.setAttribute('width', earth_radius * 2)
+// earth.setAttribute('height', earth_radius * 2)
+// earth.setAttribute(
+//   'transform',
+//   `translate(${-1 * earth_radius},${-1 * earth_radius})`
+// )
+
+// // moon
+// moon.setAttribute('x', 300)
+// moon.setAttribute('y', 300)
+// moon.setAttribute('width', moon_radius * 2)
+// moon.setAttribute('height', moon_radius * 2)
+// moon.setAttribute(
+//   'transform',
+//   `translate(${-1 * moon_radius},${-1 * moon_radius})`
+// )
 
 function download() {
   const dataURL = svgDataURL(svg)
