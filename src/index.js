@@ -65,9 +65,12 @@ earth.setAttribute(
 // moon
 moon.setAttribute('x', 100)
 moon.setAttribute('y', 100)
-moon.setAttribute('width', 100)
-moon.setAttribute('height', 100)
-moon.setAttribute('transform', `translate(${-50},${-50})`)
+moon.setAttribute('width', moon_radius * 2)
+moon.setAttribute('height', moon_radius * 2)
+moon.setAttribute(
+  'transform',
+  `translate(${-1 * moon_radius},${-1 * moon_radius})`
+)
 
 function download() {
   const dataURL = svgDataURL(svg)
