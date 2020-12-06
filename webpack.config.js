@@ -4,6 +4,9 @@ const path = require('path')
 
 module.exports = {
   devtool: 'inline-source-map',
+  devServer: {
+    port: 8000
+  },
   entry: {
     index: './src/index.js'
   },
@@ -41,12 +44,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
-      },
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      }
     ]
   }
 }
