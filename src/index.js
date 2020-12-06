@@ -1,4 +1,4 @@
-import './style.scss'
+import './assets/style/style.scss'
 
 const svg = document.querySelector('svg')
 const background = svg.querySelector('rect')
@@ -63,8 +63,8 @@ earth.setAttribute(
 )
 
 // moon
-moon.setAttribute('x', 100)
-moon.setAttribute('y', 100)
+moon.setAttribute('x', 300)
+moon.setAttribute('y', 300)
 moon.setAttribute('width', moon_radius * 2)
 moon.setAttribute('height', moon_radius * 2)
 moon.setAttribute(
@@ -76,7 +76,7 @@ function download() {
   const dataURL = svgDataURL(svg)
   const dl = document.createElement('a')
   dl.setAttribute('href', dataURL)
-  dl.setAttribute('download', 'planet-earth.svg')
+  dl.setAttribute('download', 'earth-moon.svg')
   dl.click()
   console.log('download')
 }
@@ -85,10 +85,6 @@ function svgDataURL(svg) {
   var svgAsXML = new XMLSerializer().serializeToString(svg)
   return 'data:image/svg+xml,' + encodeURIComponent(svgAsXML)
 }
-
-document.addEventListener('keydown', e => {
-  if (e.which === 32) download()
-})
 
 function cm2pix(value) {
   const dpi = 300
@@ -99,3 +95,7 @@ function cm2pix(value) {
 function fixed(val, n = 2) {
   return Number(parseFloat(val).toFixed(n))
 }
+
+document.addEventListener('keydown', e => {
+  if (e.which === 32) download()
+})
