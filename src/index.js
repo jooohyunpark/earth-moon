@@ -79,8 +79,8 @@ moon.setAttribute('cx', moon_pos.x)
 moon.setAttribute('cy', moon_pos.y)
 moon.setAttribute('r', moon_radius)
 // // earth
-// earth.setAttribute('x', 100)
-// earth.setAttribute('y', 100)
+// earth.setAttribute('x', earth_pos.x)
+// earth.setAttribute('y', earth_pos.y)
 // earth.setAttribute('width', earth_radius * 2)
 // earth.setAttribute('height', earth_radius * 2)
 // earth.setAttribute(
@@ -89,8 +89,8 @@ moon.setAttribute('r', moon_radius)
 // )
 
 // // moon
-// moon.setAttribute('x', 300)
-// moon.setAttribute('y', 300)
+// moon.setAttribute('x', moon_pos.x)
+// moon.setAttribute('y', moon_pos.y)
 // moon.setAttribute('width', moon_radius * 2)
 // moon.setAttribute('height', moon_radius * 2)
 // moon.setAttribute(
