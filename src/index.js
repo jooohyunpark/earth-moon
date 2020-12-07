@@ -55,7 +55,7 @@ const distance = fixed(cm2pix(_distance * scale) * canvas_scale)
 console.log('scaled distance pixel: ', distance, 'px')
 console.log('---------------------------------')
 
-// earth pos
+// positions
 const earth_pos = {
   x: 200,
   y: 160
@@ -65,7 +65,6 @@ const moon_pos = {
   x: earth_pos.x + distance * Math.cos((Math.PI / 2) * 0.8),
   y: earth_pos.y + distance * Math.sin((Math.PI / 2) * 0.8)
 }
-console.log(moon_pos)
 
 // draw
 ////////////////////////////////////////////////////////////
@@ -78,6 +77,7 @@ earth.setAttribute('r', earth_radius)
 moon.setAttribute('cx', moon_pos.x)
 moon.setAttribute('cy', moon_pos.y)
 moon.setAttribute('r', moon_radius)
+
 // // earth
 // earth.setAttribute('x', earth_pos.x)
 // earth.setAttribute('y', earth_pos.y)
